@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { createRef, Fragment } from "react";
 import { withTheme, withStyles } from "@material-ui/core/styles";
 import { injectIntl } from 'react-intl';
 import {
@@ -12,8 +12,9 @@ import {
     PublishedComponent,
     FormPanel,
 } from "@openimis/fe-core";
-
-
+import Button from '@material-ui/core/Button';
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 const styles = theme => ({
     tableTitle: theme.table.title,
     item: theme.paper.item,
@@ -23,6 +24,26 @@ const styles = theme => ({
 });
 
 class PaymentMasterPanel extends FormPanel {
+
+    constructor(props){
+        super(props);
+        this.divRef = createRef();
+    }
+    handleReceiptDownload(){
+        const input = this.divRef.current;
+        console.log("input", input);
+        html2canvas(input).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        const pdf = new jsPDF("p", "mm", "a4");
+
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+        pdf.save("downloaded-content.pdf");
+        });
+    }
+
     render() {
         const {
             intl,
@@ -163,7 +184,30 @@ class PaymentMasterPanel extends FormPanel {
                             onChange={p => this.updateAttribute('rejectedReason', p)}
                         />
                     </Grid> */}
+                    {edited?.status == 1 ? 
+                    <Button variant="contained" color="primary" onClick={() => this.handleReceiptDownload()}>
+                        Download Receipt
+                    </Button>
+                    : null}                   
                 </Grid>
+                 <div
+                    ref={this.divRef}
+                    style={{
+                    color: "black",
+                    backgroundColor: "white",
+                    padding: 20,
+                    width: 400,
+                    marginTop: 20,
+                    position: "absolute",
+                    left: "-9999px", // 👈 move it offscreen so user never sees it
+                    }}
+                >
+                    <p><b>Download Receipt : </b>{edited?.receiptNo}</p>
+                    <p><b>Source:</b> {edited?.origin}</p>
+                    <p><b>Date:</b> {edited?.receivedDate}</p>
+                    <p><b>Amount:</b> {edited?.receivedAmount}</p>
+                    <p><b>Payment Type:</b> {edited?.typeOfPayment}</p>
+                </div>
             </Fragment>
         );
     }
