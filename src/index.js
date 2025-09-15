@@ -3,6 +3,8 @@ import PaymentIcon from '@material-ui/icons/Payment';
 import { FormattedMessage } from "@openimis/fe-core";
 
 import messages_en from "./translations/en.json";
+import messages_am from "./translations/am.json";
+import messages_om from "./translations/om.json";
 import PremiumsPaymentsOverview from "./components/PremiumsPaymentsOverview";
 import PaymentOverviewPage from "./pages/PaymentOverviewPage";
 import PaymentStatusPicker from "./pickers/PaymentStatusPicker";
@@ -21,7 +23,7 @@ const ROUTE_PAYMENTS_PAYMENT = "payment/new";
 const ROUTE_PAYMENTS_PAYMENT_OVERVIEW = "payment/overview";
 
 const DEFAULT_CONFIG = {
-  "translations": [{ key: "en", messages: messages_en }],
+  "translations": [{ key: "en", messages: messages_en },{ key: "am", messages: messages_am },{ key: "om", messages: messages_om }],
   "reducers": [{ key: 'payment', reducer }],
 
   "refs": [
