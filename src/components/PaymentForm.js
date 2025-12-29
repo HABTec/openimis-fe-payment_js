@@ -91,6 +91,7 @@ class PaymentForm extends Component {
     }
 
     canSave = () => {
+        return false
         if (!this.state.payment.typeOfPayment) return false;
         return true;
     }
