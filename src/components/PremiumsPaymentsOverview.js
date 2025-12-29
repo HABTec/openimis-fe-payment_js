@@ -208,7 +208,7 @@ class PremiumsPaymentsOverview extends PagedDataHandler {
                 tooltip: formatMessage(intl, "contribution", "reload.tooltip")
             }
         ];
-        if (!!!readOnly && canAdd) {
+        if (!!!readOnly && false) {
             actions.push(
                 {
                     button: <IconButton className={!premium ? classes.disabled : ""} onClick={this.addNewPayment}><AddIcon /></IconButton>,

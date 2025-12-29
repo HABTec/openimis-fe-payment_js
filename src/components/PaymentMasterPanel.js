@@ -60,7 +60,8 @@ class PaymentMasterPanel extends FormPanel {
                             value={!edited ? "" : edited.receivedDate}
                             module="payment"
                             label="payment.receivedDate"
-                            readOnly={readOnly}
+                            readOnly={true}
+                            disabled={true}
                             onChange={p => this.updateAttribute('receivedDate', p)}
                         />
                     </Grid>
@@ -69,7 +70,7 @@ class PaymentMasterPanel extends FormPanel {
                             value={!edited ? "" : edited.requestDate}
                             module="payment"
                             label="payment.requestDate"
-                            readOnly={readOnly}
+                            readOnly={true}
                             onChange={p => this.updateAttribute('requestDate', p)}
                         />
                     </Grid>
@@ -78,7 +79,7 @@ class PaymentMasterPanel extends FormPanel {
                             value={!edited ? "" : edited.matchedDate}
                             module="payment"
                             label="payment.matchedDate"
-                            readOnly={readOnly}
+                            readOnly={true}
                             onChange={p => this.updateAttribute('matchedDate', p)}
                         />
                     </Grid>
@@ -87,7 +88,7 @@ class PaymentMasterPanel extends FormPanel {
                             value={!edited ? "" : edited.dateLastSms}
                             module="payment"
                             label="payment.dateLastSms"
-                            readOnly={readOnly}
+                            readOnly={true}
                             onChange={p => this.updateAttribute('dateLastSms', p)}
                         />
                     </Grid>
@@ -95,7 +96,7 @@ class PaymentMasterPanel extends FormPanel {
                         <AmountInput
                             module="payment"
                             label="payment.expectedAmount"
-                            readOnly={readOnly}
+                            readOnly={true}
                             value={!edited ? "" : edited.expectedAmount}
                             onChange={p => this.updateAttribute('expectedAmount', p)}
                         />
@@ -104,7 +105,7 @@ class PaymentMasterPanel extends FormPanel {
                         <AmountInput
                             module="payment"
                             label="payment.receivedAmount"
-                            readOnly={readOnly}
+                            readOnly={true}
                             value={!edited ? "" : edited.receivedAmount}
                             onChange={p => this.updateAttribute('receivedAmount', p)}
                         />
@@ -113,7 +114,7 @@ class PaymentMasterPanel extends FormPanel {
                         <AmountInput
                             module="payment"
                             label="payment.transferFee"
-                            readOnly={readOnly}
+                            readOnly={true}
                             value={!edited ? "" : edited.transferFee}
                             onChange={p => this.updateAttribute('transferFee', p)}
                         />
@@ -123,7 +124,7 @@ class PaymentMasterPanel extends FormPanel {
                             pubRef="contribution.PremiumPaymentTypePicker"
                             withNull={false}
                             required
-                            readOnly={readOnly}
+                            readOnly={true}
                             value={!edited ? "" : edited.typeOfPayment}
                             onChange={p => this.updateAttribute('typeOfPayment', p)}
                         />
@@ -132,7 +133,7 @@ class PaymentMasterPanel extends FormPanel {
                         <TextInput
                             module="payment"
                             label="payment.receiptNo"
-                            readOnly={readOnly}
+                            readOnly={true}
                             value={!edited ? "" : edited.receiptNo}
                             onChange={p => this.updateAttribute('receiptNo', p)}
                         />
@@ -141,7 +142,7 @@ class PaymentMasterPanel extends FormPanel {
                         <PublishedComponent
                             pubRef="payment.PaymentStatusPicker"
                             withNull={false}
-                            readOnly={readOnly}
+                            readOnly={true}
                             value={!edited ? "" : edited.status}
                             onChange={p => this.updateAttribute('status', p)}
                         />
@@ -150,7 +151,7 @@ class PaymentMasterPanel extends FormPanel {
                         <TextInput
                             module="payment"
                             label="payment.origin"
-                            readOnly={readOnly}
+                            readOnly={true}
                             value={!edited ? "" : edited.origin}
                             onChange={p => this.updateAttribute('origin', p)}
                         />
@@ -159,7 +160,7 @@ class PaymentMasterPanel extends FormPanel {
                         <TextInput
                             module="payment"
                             label="payment.officerCode"
-                            readOnly={readOnly}
+                            readOnly={true}
                             value={!edited ? "" : edited.officerCode}
                             onChange={p => this.updateAttribute('officerCode', p)}
                         />
